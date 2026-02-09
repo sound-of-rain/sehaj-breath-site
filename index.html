@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tantra Breath — Breathwork & Meditation</title>
+    <meta name="description" content="A gentle companion for breathwork and meditation. No streaks, no goals — just your practice.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(180deg,
+                #d4a48e 0%,
+                #c49480 25%,
+                #b48470 50%,
+                #a47868 75%,
+                #946858 100%
+            );
+            background-attachment: fixed;
+            color: #3a2a24;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 0 2px 30px rgba(160, 100, 70, 0.25);
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 3rem;
+            max-width: 420px;
+            line-height: 1.6;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            padding: 0.75rem 2.2rem;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2rem;
+            color: #fff;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .app-store-badge { display: inline-block; transition: opacity 0.2s; }
+        .app-store-badge:hover { opacity: 0.8; }
+        .app-store-badge img { height: 54px; }
+
+        /* Screenshots row */
+        .screenshots {
+            padding: 2rem 1.5rem 4rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots-inner {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .screenshots img {
+            width: 200px;
+            border-radius: 1.25rem;
+            box-shadow: 0 12px 48px rgba(80, 40, 20, 0.2);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshots img:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Section shared styles */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 1px 16px rgba(160, 100, 70, 0.2);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            max-width: 440px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Feature sections — alternating screenshot + text */
+        .feature-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-section.reverse { flex-direction: row-reverse; }
+
+        .feature-section .phone {
+            flex-shrink: 0;
+        }
+
+        .feature-section .phone img {
+            width: 240px;
+            border-radius: 1.5rem;
+            box-shadow: 0 16px 56px rgba(80, 40, 20, 0.25);
+        }
+
+        .feature-section .text {
+            max-width: 340px;
+        }
+
+        .feature-section .text h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 1px 12px rgba(160, 100, 70, 0.15);
+        }
+
+        .feature-section .text p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.25);
+            margin: 0 auto;
+            border-radius: 1px;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            text-align: center;
+            padding: 5rem 1.5rem;
+            max-width: 100%;
+        }
+
+        .philosophy blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            border: none;
+            line-height: 1.9;
+            max-width: 460px;
+            margin: 0 auto;
+            text-shadow: 0 1px 12px rgba(160, 100, 70, 0.1);
+        }
+
+        /* Donation */
+        .donation {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .donation h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .donation p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem 4rem;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: #fff; }
+
+        footer p { color: rgba(255, 255, 255, 0.45); }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero .tagline { font-size: 1.05rem; }
+
+            .screenshots img { width: 160px; }
+            .screenshots-inner { justify-content: flex-start; padding-left: 1rem; }
+
+            .feature-section {
+                flex-direction: column !important;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+                text-align: center;
+            }
+
+            .feature-section .phone img { width: 200px; }
+            .feature-section .text { max-width: 100%; }
+
+            .philosophy blockquote { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Tantra Breath</h1>
+        <p class="tagline">A gentle companion for breathwork and meditation. No streaks, no goals, just your practice.</p>
+        <!-- Replace with App Store link once live -->
+        <span class="coming-soon">Coming soon on the App Store</span>
+    </section>
+
+    <section class="screenshots">
+        <div class="screenshots-inner">
+            <img src="screenshots/02-presence-eyes.png" alt="Presence Check-In">
+            <img src="screenshots/01-breath-session.png" alt="Guided breath session">
+            <img src="screenshots/03-emotion-journal.png" alt="Emotion Journal">
+            <img src="screenshots/04-journey-dashboard.png" alt="Journey Dashboard">
+            <img src="screenshots/05-presence-breath.png" alt="Presence breath">
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="feature-section">
+        <div class="phone">
+            <img src="screenshots/01-breath-session.png" alt="Guided breath session with wave animation">
+        </div>
+        <div class="text">
+            <h3>Guided Breathing</h3>
+            <p>Follow calming wave animations through inhale, hold, and exhale. Multiple patterns, at your own pace, with optional sound and haptic cues.</p>
+        </div>
+    </section>
+
+    <section class="feature-section reverse">
+        <div class="phone">
+            <img src="screenshots/03-emotion-journal.png" alt="Emotion journal check-in">
+        </div>
+        <div class="text">
+            <h3>Emotion Journal</h3>
+            <p>Check in with how you feel before and after each session. Not to optimize, just to notice.</p>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="phone">
+            <img src="screenshots/02-presence-eyes.png" alt="Presence check-in with body awareness">
+        </div>
+        <div class="text">
+            <h3>Presence Check-In</h3>
+            <p>A quiet body scan before you begin. Soften your eyes, unclench your jaw, release your shoulders. No quiz, no score, just arriving.</p>
+        </div>
+    </section>
+
+    <section class="feature-section reverse">
+        <div class="phone">
+            <img src="screenshots/04-journey-dashboard.png" alt="Journey dashboard with practice history">
+        </div>
+        <div class="text">
+            <h3>Journey Dashboard</h3>
+            <p>Your practice history as a gentle record. Emotions over time, minutes in silence, no streaks to maintain, just an honest reflection.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="philosophy">
+        <blockquote>
+            No streaks, no goals, no optimization.<br>
+            Just gentle records of where you've been,<br>
+            and a quiet space to return to.
+        </blockquote>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="donation">
+        <h2>Free, always</h2>
+        <p>
+            This app is free and always will be.
+            If it's helpful and you're able, optional donations help cover development and hosting.
+            If not, you're fully welcome here.
+            And if donating would cause any stress, please don't.
+            Your peace matters more.
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            &nbsp;&middot;&nbsp;
+            &copy; 2026 Tantra Breath
+        </p>
+    </footer>
+
+</body>
+</html>
